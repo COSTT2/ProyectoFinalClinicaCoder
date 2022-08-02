@@ -1,0 +1,19 @@
+{% extends "academia/base.html" %}
+{% block main %}
+<body>
+    <h1>Cursos disponibles en la AcademiaCoder</h1>
+    <ul>
+        {% for Cursos in object_list %}
+            <li>
+                <p> Nombre: {{ Cursos.titulo }} </p>
+                <p>
+                <a href= "{% url "informacionCursos" Cursos.id %}">Ver</a>
+                <a href= "{% url "editarCursos" Cursos.id %}">Editar</a>
+                <a href= "{% url "borrarCursos" Cursos.id %}">Borrar</a>
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href= "{% url "crearCursos" %}">Añadir un nuevo curso</a>
+</body>
+{% endblock %}

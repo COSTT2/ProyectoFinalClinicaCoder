@@ -7,7 +7,7 @@ class Cursos(models.Model):
     descripcion = models.CharField(max_length=100)
     contenido = RichTextField()
     imagen = models.ImageField(upload_to="articulos", null=True, blank=True)
-    duracion = models.Charfield(max_lenght=40)
+    duracion = models.CharField(max_length=40)
     
 class profesores(models.Model):
     nombre = models.CharField(max_length=40)

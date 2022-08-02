@@ -1,0 +1,14 @@
+{% extends "academia/base.html" %}
+{% block main %}
+<body>
+    <p>Titulo del curso = <i>{{Cursos.nombre}}</i></p>
+    <p>Descripción del curso = <i>{{Cursos.descripcion}}</i></p>
+    <p>Contenido del Curso = <i>{{Cursos.contenido}}</i></p>
+    <p>Subir Imagen = <i>{{Cursos.imagen}}</i></p>
+    <p>Duracion del curso = <i>{{Cursos.duracion}}</i></p>
+
+    <p>
+        <a href="{% url "listaCursos" %}">Regresar</a>
+    </p>
+</body>
+{% endblock %}
