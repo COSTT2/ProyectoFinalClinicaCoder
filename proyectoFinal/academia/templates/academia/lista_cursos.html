@@ -3,17 +3,17 @@
 <body>
     <h1>Cursos disponibles en la AcademiaCoder</h1>
     <ul>
-        {% for Cursos in object_list %}
+        {% for cursos in object_list %}
             <li>
-                <p> Nombre: {{ Cursos.titulo }} </p>
+                <p> Nombre: {{ cursos.titulo }} </p>
                 <p>
-                <a href= "{% url "informacionCursos" Cursos.id %}">Ver</a>
-                <a href= "{% url "editarCursos" Cursos.id %}">Editar</a>
-                <a href= "{% url "borrarCursos" Cursos.id %}">Borrar</a>
+                <a href= "{% url "mostrarCurso" cursos.id %}">Ver</a>
+                <a href= "{% url "editarCurso" cursos.id %}">Editar</a>
+                <a href= "{% url "borrarCurso" cursos.id %}">Borrar</a>
                 </p>
             </li>
         {% endfor %}
     </ul>
-    <a href= "{% url "crearCursos" %}">Añadir un nuevo curso</a>
+    <a href= "{% url "crearCursos" %}">Añadir un nuevo Curso</a>
 </body>
 {% endblock %}

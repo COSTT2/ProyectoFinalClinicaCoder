@@ -1,0 +1,15 @@
+{% extends "academia/base.html" %}
+{% block main %}
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button type="submit"> Iniciar sesión </button>
+
+    </form>
+<a href="{% url "registro" %}>Registrarse</a>
+</body>
+
+
+{% endblock %}

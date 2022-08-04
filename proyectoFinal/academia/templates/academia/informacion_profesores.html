@@ -2,11 +2,11 @@
 {% block main %}
 <body>
     <p>Nombre del profesor = <i>{{profesores.nombre}}</i></p>
-    <p>Descripción del curso = <i>{{profesores.apellido}}</i></p>
-    <p>Contenido del Curso = <i>{{profesores.especialidad}}</i></p>
-    <p>Subir Imagen = <i>{{profesores.mail}}</i></p>
-    <p>Duracion del curso = <i>{{profesores.educacion}}</i></p>
-    <p>Duracion del curso = <i>{{profesores.imagen}}</i></p>
+    <p>Apellido del profesor = <i>{{profesores.apellido}}</i></p>
+    <p>Especialidad = <i>{{profesores.especialidad}}</i></p>
+    <p>Mail = <i>{{profesores.mail}}</i></p>
+    <p>Educacion = <i>{{profesores.educacion}}</i></p>
+    <p><i>{{profesores.imagen}}</i></p>
 
     <p>
         <a href="{% url "listaProfesores" %}">Regresar</a>

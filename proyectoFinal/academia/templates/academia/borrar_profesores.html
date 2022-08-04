@@ -1,0 +1,10 @@
+{% extends "academia/base.html" %}
+{% block main %}
+<body>
+    <form method="POST">{% csrf_token %}
+        ¿Seguro quiere eliminar este profesor? "{{ object }}"?
+        <input type="submit" value="Confirmar" /> 
+    </form>
+    <a href="{% url "listaProfesores" %}">Regresar</a>
+</body>
+{% endblock %}

@@ -3,16 +3,14 @@
 <body>
     <h1>Profesores de la AcademiaCoder</h1>
     <ul>
-        {% for Profesores in object_list %}
-        <div style="text-align:center;">
-            <img height="225" src="{{ object.image.url }}" /> 
-        </div>
+        {% for profesor in object_list %}
             <li>
-                <p> Nombre: {{ Profesores.nombre }} </p>
+                <p> Nombre: {{ profesor.nombre }} </p>
+                <p> {{ profesor.imagen }} </p>
                 <p>
-                <a href="{% url "mostrarProfesores" profesores.id %}">Ver</a>
-                <a href= "#">Editar</a>
-                <a href= "#">Borrar</a>
+                <a href= "{% url "mostrarProfesores" profesor.id %}">Ver</a>
+                <a href= "{% url "editar_profesores" profesor.id %}">Editar</a>
+                <a href= "{% url "borrar_profesores" profesor.id %}">Borrar</a>
                 </p>
             </li>
         {% endfor %}
