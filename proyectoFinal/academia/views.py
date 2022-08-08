@@ -1,6 +1,7 @@
 from ast import Return
+from pyexpat.errors import messages
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from academia.models import Curso, profesores
 from django.views.generic import ListView
@@ -12,11 +13,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView
+from django.contrib import messages
 
 def inicio(request):
-    return render(request, "academia/inicio.html")
+    return render(request,"academia/inicio.html")
 
 # --- views profesores ---
 
@@ -49,7 +52,7 @@ class borrarProfesores(DeleteView):
     
 class cursosLista(ListView):
     model = Curso
-    template_name = "academia/lista_cursos.html"
+    template_name = "academia/cursos.html"
 
 class mostrarCurso(DetailView):
     model = Curso
@@ -73,6 +76,9 @@ class crearCursos(CreateView):
     fields = ["titulo", "descripcion", "contenido", "imagen", "duracion"]
     
 # --- views usuarios ---
+@login_required
+def dummy(request):
+    render(request, "")
     
 class edicionUsuario(LoginRequiredMixin, UpdateView):
     model = User
@@ -86,7 +92,7 @@ class edicionUsuario(LoginRequiredMixin, UpdateView):
         return self.request.user.id == int(self.kwargs["pk"])
     
 class SignUpView(SuccessMessageMixin, CreateView):
-  template_name = 'academia/crear_cuenta_form.html'
+  template_name = 'academia/register.html'
   success_url = reverse_lazy('login')
   form_class = UserCreationForm
   success_message = "Se creo tu perfil satisfactoriamente"
@@ -104,16 +110,16 @@ def peticion_login(request):
             
             if user is not None:
                 login(request, user)
-                
-                return render(request, "academia/inicio.html", {"mensaje":f"Bienvenido {usuario}"} )
+                messages.success(request, f"bienvenido {usuario}")
+                return redirect("campus")
             
             else:
-                
-                return render(request, "academia/inicio.html", {"mensaje":f"Error, los son datos incorrectos"} )
+                messages.error(request, "La contraseña o nombre de usuario son incorrectos")
+                return render(request, "academia/login.html")
             
         else: 
-            
-                return render(request, "academia/inicio.html", {"mensaje":"Error, formulario erroneo"})
+                messages.error(request, "Ups! algo salió mal")
+                return render(request, "academia/login.html")
     
     form = AuthenticationForm()
     

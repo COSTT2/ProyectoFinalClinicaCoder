@@ -1,4 +1,4 @@
-{% extends "academia/base.html" %}
+{% extends "academia/cursos.html" %}
 {% block main %}
 <body>
     <p>Titulo del curso = <i>{{curso.titulo}}</i></p>
@@ -8,7 +8,7 @@
     <p>Duracion del curso = <i>{{curso.duracion}}</i></p>
 
     <p>
-        <a href="{% url "listaCursos" %}">Regresar</a>
+        <a href="{% url "cursos" %}">Regresar</a>
     </p>
 </body>
 {% endblock %}

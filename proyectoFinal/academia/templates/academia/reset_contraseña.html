@@ -1,0 +1,11 @@
+{% extends "academia/base.html" %}
+{% block main %}
+
+<form action="" method="POST">{% csrf_token %}
+    {% if form.email.errors %} {{ form.email.errors }} {% endif %}
+
+        <p>{{ form.email }}</p>
+
+</form>
+
+{% endblock %}

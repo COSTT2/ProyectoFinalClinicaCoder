@@ -8,12 +8,20 @@
                 <p> Nombre: {{ cursos.titulo }} </p>
                 <p>
                 <a href= "{% url "mostrarCurso" cursos.id %}">Ver</a>
-                <a href= "{% url "editarCurso" cursos.id %}">Editar</a>
+
+                {% if user.is_staff %}
+                    <a href= "{% url "editarCurso" cursos.id %}">Editar</a>
+                {% endif %}
+
+                {% if user.is_staff %}
                 <a href= "{% url "borrarCurso" cursos.id %}">Borrar</a>
+                {% endif %}
                 </p>
             </li>
         {% endfor %}
     </ul>
+    {% if user.is_staff %}
     <a href= "{% url "crearCursos" %}">Añadir un nuevo Curso</a>
+    {% endif %}
 </body>
 {% endblock %}
