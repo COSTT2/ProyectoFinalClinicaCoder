@@ -1,5 +1,5 @@
 from django.urls import path, include
-from academia.views import inicio
+from academia.views import inicio, About
 from academia.views import cursosLista, mostrarCurso, editarCurso, borrarCurso, crearCursos
 from academia.views import listaProfesores, crearProfesores, mostrarProfesores, editarProfesores, borrarProfesores
 from academia.views import edicionUsuario, SignUpView
@@ -24,6 +24,8 @@ urlpatterns = [
     path("login/", peticion_login, name = "login"),
     path("logout/", LogoutView.as_view(template_name="academia/logout.html"), name = "logout"),
     path("registro/", SignUpView.as_view(), name = "registro"),
-    path("accounts/", include("django.contrib.auth.urls")),
+    path('about/', About.as_view(), name="sobrenosotros"),
+    
+    
     
 ]

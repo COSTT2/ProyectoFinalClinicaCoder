@@ -1,14 +1,34 @@
 {% extends "academia/cursos.html" %}
 {% block main %}
+<header class="py-5">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+                <h1 class="display-5 fw-bold"> {{ curso.titulo }}</h1>
+                <p class="fs-5"> Para inscribirse a este curso en cuestion ingrese a nuestro campus virtual!</p>
+                <a class="fs-6 btn btn-primary btn-lg" href="{% url "login" %}">Ingresar al campus</a>
+            </div>
+        </div>
+    </div>
+</header>
 <body>
-    <p>Titulo del curso = <i>{{curso.titulo}}</i></p>
-    <p>Descripción del curso = <i>{{curso.descripcion}}</i></p>
-    <p>Contenido del Curso = <i>{{curso.contenido}}</i></p>
-    <p>Subir Imagen = <i>{{curso.imagen}}</i></p>
-    <p>Duracion del curso = <i>{{curso.duracion}}</i></p>
-
-    <p>
-        <a href="{% url "cursos" %}">Regresar</a>
-    </p>
+    <section class="pt-4">
+        <div class="container px-lg-5">
+            <div class="row gx-lg-3">
+                    <div class="col-lg-2 col-xxl-12 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="mb-4"></div>
+                                <h2 class="mb-3 fs-5 fw-plain">{{ curso.descripcion }}</h2>
+                                <p><i>{{curso.imagen}}</i></p>
+                                <p class="mb-2">{{curso.contenido}}</p>
+                                <p>Duracion del curso = {{curso.duracion}}</p>
+                                <div class="d-grid"><a class="btn btn-outline-secondary" href="{% url "cursos" %}">Regresar</a></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
 </body>
 {% endblock %}

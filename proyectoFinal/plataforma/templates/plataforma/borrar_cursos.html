@@ -1,0 +1,21 @@
+{% extends "plataforma/base.html" %}
+{% block main %}
+    <main>
+        <header class="py-5">
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <div class="m-4 m-lg-5">
+                        <form method="POST">{% csrf_token %}
+                            <div class="mb-2">
+                                <span class="display-6 fw-bold">Eliminar cursos</span>
+                            </div>
+                            <p>¿Seguro quiere eliminar este curso? "{{ object }}"?</p>
+                            <input class="mb-3" type="submit" value="Confirmar" /> 
+                        </form>
+                        <a href="{% url "listaCursos" %}">Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </main>
+{% endblock %}

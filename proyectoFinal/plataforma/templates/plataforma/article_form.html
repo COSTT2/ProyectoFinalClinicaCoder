@@ -1,0 +1,24 @@
+{% extends "plataforma/index.html" %}
+{% load static %}
+
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+
+
+{% block main %}
+<main class="flex-shrink-0">
+    <div class="container">
+        <a type="button" href = "{% url 'listaArticulos' %}" style="margin-top: 1em;" class="btn btn-sm btn-outline-primary" >Back to Panel</a>
+        <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
+        {{ form.as_p }}
+        {% if request.resolver_match.url_name == "article-update" %}
+            <input type="submit" value="Confirmar">
+        {% else %}
+            <input type="submit" value="Confirmar">
+        {% endif %}    
+        </form>
+         
+    </div>  
+</main>
+{% endblock %}

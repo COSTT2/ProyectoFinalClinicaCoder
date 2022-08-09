@@ -1,0 +1,70 @@
+{% extends "plataforma/index.html" %}
+    {% block main %}
+        <header class="py-5">
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <div class="m-4 m-lg-5">
+                        <h1 class="display-5 fw-bold">Cursos de la academia!</h1>
+                        <p class="fs-4">Estos son los cursos disponibles actualmente en la AcademiaCOSTT</p>
+                        <a class=""></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <body>
+            <section class="pt-4">
+                <div class="container px-lg-5">
+                    <div class="row gx-lg-3">
+                        {% for curso in object_list %}
+                            <div class="col-lg-5 col-xxl-4 mb-5">
+                                <div class="card bg-light border-0 h-100">
+                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                        <div class="mb-4"></div>
+                                        <div class="mb-2">
+                                            <span class="display-6 fw-bold">{{ curso.titulo }}</span>
+                                        </div>
+                                        <h2 class="mb-4 fs-6 fw-plain">{{ curso.descripcion }}</h2>
+                                        <p class="mb-3">{{curso.contenido}}</p>
+                                        <div class="mb-3 d-grid"><a class="btn btn-outline-secondary" href="{% url "infoCursos" curso.id %}">Mas información</a></div>
+                                        <div class="mb-3 d-grid"><a class="btn btn-outline-primary" href="#">Inscribirse</a></div>
+                                        {% if user.is_staff %}
+                                            <div class="mb-3 d-grid"><a class="btn btn-outline-primary" href="{% url "editarCurso" curso.id %}">Editar curso</a></div>
+                                            <div class="mb-3 d-grid"><a class="btn btn-outline-primary" href="{% url "borrarCurso" curso.id %}">Borrar curso</a></div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% if user.is_staff %}
+                            <div class="col-lg-5 col-xxl-4 mb-5">
+                                <div class="card bg-light border-0 h-100">
+                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                        <div class="mb-4"></div>
+                                        <div class="mb-2">
+                                            <span class="display-6 fw-bold"></span>
+                                        </div>
+                                        <h2 class="mb-4 fs-6 fw-plain">Añadir un nuevo curso a la lista</h2>
+                                        <div class="d-grid"><a class="btn btn-outline-primary" href="{% url "crearCursos" %}">Añadir</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="col-lg-5 col-xxl-4 mb-5">
+                            <div class="card bg-light border-0 h-100">
+                                <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                    <div class="mb-4"></div>
+                                    <div class="mb-2">
+                                        <span class="display-6 fw-bold"></span>
+                                    </div>
+                                    <h2 class="mb-4 fs-6 fw-plain">Si quiere recomendar algún curso que deberiamos incluir mandenos un mensaje!</h2>
+                                    <div class="d-grid"><a class="btn btn-outline-primary" href="#">Contacto</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </body>
+    {% endblock %}
+    </body>
+</html>

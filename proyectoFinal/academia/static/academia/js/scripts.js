@@ -5,3 +5,5 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */

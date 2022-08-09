@@ -25,9 +25,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url "inicio" %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url "sobrenosotros" %}">Sobre nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url "login" %}">Plataforma</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contactForm">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url "inicio" %}">Contacto</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">Cursos mas solicitados de la academia!</h1>
                         <p class="fs-4">Estos son algunos de los cursos con mas inscriptos que se encuentran disponibles en nuestra academia, si desea inscribirse entre a nuestro campus virtual!</p>
-                        <a class="btn btn-primary btn-lg" href="#!">Ingresar al campus</a>
+                        <a class="btn btn-primary btn-lg" href="{% url "login" %}">Ingresar al campus</a>
                     </div>
                 </div>
             </div>
@@ -49,17 +49,17 @@
             <section class="pt-4">
                 <div class="container px-lg-5">
                     <div class="row gx-lg-3">
-                        {% for cursos in object_list %}
+                        {% for curso in object_list %}
                             <div class="col-lg-5 col-xxl-4 mb-5">
                                 <div class="card bg-light border-0 h-100">
                                     <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                         <div class="mb-4"></div>
                                         <div class="mb-2">
-                                            <span class="display-6 fw-bold">{{ cursos.titulo }}</span>
+                                            <span class="display-6 fw-bold">{{ curso.titulo }}</span>
                                         </div>
-                                        <h2 class="mb-4 fs-6 fw-plain">{{ cursos.descripcion }}</h2>
-                                        <p class="mb-3">{{cursos.contenido}}</p>
-                                        <div class="d-grid"><a class="btn btn-outline-primary" href="{% url "mostrarCurso" cursos.id %}">Mas información</a></div>
+                                        <h2 class="mb-4 fs-6 fw-plain">{{ curso.descripcion }}</h2>
+                                        <p class="mb-3">{{curso.contenido}}</p>
+                                        <div class="d-grid"><a class="btn btn-outline-primary" href="{% url "mostrarCurso" curso.id %}">Mas información</a></div>
                                     </div>
                                 </div>
                             </div>
