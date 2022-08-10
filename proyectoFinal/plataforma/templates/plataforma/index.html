@@ -63,12 +63,21 @@
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Profesores</div>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{% url "listarProfes" %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Profesores
                             <a class="">
                                 <div class="sb-nav-link-icon"><i class=""></i></div>
                             </a>
+                            {% if user.is_staff %}    
+                            <div class="sb-sidenav-menu-heading">Administración</div>
+                            <a class="nav-link" href="{% url "admin" %}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Admin
+                            <a class="">
+                                <div class="sb-nav-link-icon"><i class=""></i></div>
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

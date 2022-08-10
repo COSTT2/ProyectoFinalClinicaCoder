@@ -9,7 +9,7 @@ from academia.views import peticion_login
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path("inicio/", inicio, name="inicio"),
+    path("", inicio, name="inicio"),
     path("profesores/lista", listaProfesores.as_view(), name="listaProfesores"),
     path("profesores/crear", crearProfesores.as_view(), name="crearProfesores"),
     path("profesores/<pk>/", mostrarProfesores.as_view(), name="mostrarProfesores"),

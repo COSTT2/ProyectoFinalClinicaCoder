@@ -18,25 +18,12 @@ class Curso(models.Model):
     imagen = models.ImageField(upload_to="articulos", null=True, blank=True)
     duracion = models.CharField(max_length=40)
     
-class Inscripto(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    imagen = models.ImageField(upload_to="avatares", null=True, blank = True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-    
-    def __str__(self):
-        return f"{self.user.username}"
-    
-    
-    
+
 class Publisher(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     avatar = models.ImageField(upload_to="avatars", null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return f"{self.user.username}"
 
 
 class Article(models.Model):
@@ -47,6 +34,7 @@ class Article(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     date_published = models.DateTimeField()
+    texto = models.CharField(max_length=500, default="")
 
 
 class Portal(models.Model):

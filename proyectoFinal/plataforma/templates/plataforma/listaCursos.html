@@ -6,6 +6,9 @@
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">Cursos de la academia!</h1>
                         <p class="fs-4">Estos son los cursos disponibles actualmente en la AcademiaCOSTT</p>
+                        {% if user.is_staff %}
+                            <div class="mb-3 d-grid"><a class="btn btn-outline-primary" href="{% url "admin" %}">Volver</a></div>
+                        {% endif %}
                         <a class=""></a>
                     </div>
                 </div>

@@ -132,7 +132,7 @@ def peticion_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f"Bienvenido {usuario}")
-                return redirect("inicio")
+                return redirect("inicioCampus")
             
             else:
                 messages.error(request, "La contraseña o nombre de usuario son incorrectos")
