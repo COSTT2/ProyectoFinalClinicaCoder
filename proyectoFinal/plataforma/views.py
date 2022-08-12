@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from academia.models import Curso, Article, Portal, profesores
-from django.views.generic import ListView, View
+from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from academia.views import BaseView
 from django.contrib.auth.models import User
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DetailView,  CreateView, UpdateView, DeleteView
+
+
 
 @login_required
 def plataforma(request):

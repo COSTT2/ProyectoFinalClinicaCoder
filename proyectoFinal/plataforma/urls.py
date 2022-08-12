@@ -3,8 +3,8 @@ from plataforma.views import plataforma, listaCursos, infoCursos, PaginaInicio, 
 from plataforma.views import ArticleUpdateView, ArticleDeleteView
 from plataforma.views import listaProfes, listaUsuarios
 from academia.views import edicionUsuario, perfilUsuario, perfilUsuario
-from django.contrib.auth import views as auth_views
 from plataforma.views import inicio, admin
+
 
 urlpatterns = [
     path("inicio/", inicio, name="inicioCampus"),
@@ -21,7 +21,6 @@ urlpatterns = [
     path("administracion/articulos/lista", ArticleList.as_view(), name="listaArticulos"),
     path('articulo/<pk>/editar', ArticleUpdateView.as_view(), name ="editarArticulo"),
     path('articulo/<pk>/borrar', ArticleDeleteView.as_view(), name ="borrarArticulo"),
-    path("listaProfesores/", listaProfes.as_view(), name="listarProfes"),
-    
+    path("listaProfesores/", listaProfes.as_view(), name="listarProfes"),   
 
 ]
